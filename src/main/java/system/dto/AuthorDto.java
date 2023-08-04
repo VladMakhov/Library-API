@@ -12,6 +12,5 @@ public class AuthorDto {
     private long id;
     private String name;
     private String lastName;
-    private Date birthDate;
-    private List<Book> bookList;
+    private int birthDate;
 }

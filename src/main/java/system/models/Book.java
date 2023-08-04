@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -16,20 +15,16 @@ import java.util.List;
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private long id;
 
-    @Column(name = "book_name")
     private String bookName;
 
-    @Column(name = "publish_date")
-    private Date publishDate;
+    private int year;
 
     @ManyToOne
-    @JoinColumn(name = "author_id", referencedColumnName = "id")
-    private Author authorId;
+    @JoinColumn(name = "author_id")
+    private Author author;
 
     @OneToMany(mappedBy = "bookId", cascade = CascadeType.ALL)
-    @Column(name = "review_list")
     private List<Review> reviewList;
 }

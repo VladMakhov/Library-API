@@ -1,4 +1,4 @@
-package system.services;
+package system.services.interfaces;
 
 public interface ReviewService {
 }
