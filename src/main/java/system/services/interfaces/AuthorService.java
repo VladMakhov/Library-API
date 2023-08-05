@@ -12,4 +12,6 @@ public interface AuthorService {
     AuthorDto getAuthorById(long id);
     List<BookDto> getBooksByAuthorId(long id);
     AuthorDto createAuthor(AuthorDto authorDto);
+    AuthorDto updateAuthor(long id, AuthorDto authorDto);
+    AuthorDto deleteAuthor(long id);
 }

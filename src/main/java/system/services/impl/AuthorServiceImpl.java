@@ -70,6 +70,26 @@ public class AuthorServiceImpl implements AuthorService {
         return mapToDto(newAuthor);
     }
 
+    @Override
+    public AuthorDto updateAuthor(long id, AuthorDto authorDto) {
+        Author author = authorRepository.findById(id).orElseThrow(() ->
+                new AuthorNotFoundException("Author with id=" + id + " not found"));
+        author.setName(authorDto.getName());
+        author.setLastName(authorDto.getLastName());
+        author.setBirthYear(authorDto.getBirthDate());
+        authorRepository.save(author);
+        return mapToDto(author);
+    }
+
+    @Override
+    public AuthorDto deleteAuthor(long id) {
+        Author author = authorRepository.findById(id).orElseThrow(() ->
+                new AuthorNotFoundException("Author with id=" + id + " not found"));
+        AuthorDto authorDto = mapToDto(author);
+        authorRepository.delete(author);
+        return authorDto;
+    }
+
 
     public AuthorDto mapToDto(Author author) {
         AuthorDto authorDto = new AuthorDto();
