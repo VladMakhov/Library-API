@@ -48,6 +48,16 @@ public class LibraryController {
         return new ResponseEntity<>(bookService.getBooksByBook(id), HttpStatus.FOUND);
     }
 
+    @GetMapping("books/{initialBookId}/author/books/{bookId}")
+    public ResponseEntity<BookDto> getBookByBook(@PathVariable("initialBookId") long initialBookId, @PathVariable("bookId") long bookId) {
+        return new ResponseEntity<>(bookService.getBookById(bookId), HttpStatus.FOUND);
+    }
+
+    @GetMapping("books/{initialBookId}/author/books/{bookId}/reviews")
+    public ResponseEntity<List<ReviewDto>> getReviewsByBookByBook(@PathVariable("initialBookId") long initialBookId, @PathVariable("bookId") long bookId) {
+        return new ResponseEntity<>(reviewService.getReviewByBookId(bookId), HttpStatus.FOUND);
+    }
+
     @GetMapping("books/{bookId}/reviews")
     public ResponseEntity<List<ReviewDto>> getBookReview(@PathVariable("bookId") long id) {
         return new ResponseEntity<>(reviewService.getReviewByBookId(id), HttpStatus.FOUND);
@@ -98,9 +108,9 @@ public class LibraryController {
         return new ResponseEntity<>(reviewService.createReview(id, reviewDto), HttpStatus.CREATED);
     }
 
-    @PutMapping("books/{bookId}/update")
-    public ResponseEntity<BookDto> updateBook(@PathVariable("bookId") long id, @RequestBody BookDto bookDto) {
-        return new ResponseEntity<>(bookService.updateBook(id, bookDto), HttpStatus.OK);
+    @PostMapping("authors/{authorId}/books/{bookId}/reviews/create")
+    public ResponseEntity<ReviewDto> createReview(@PathVariable("authorId") long authorId,@PathVariable("bookId") long bookId, @RequestBody ReviewDto reviewDto) {
+        return new ResponseEntity<>(reviewService.createReview(bookId, reviewDto), HttpStatus.CREATED);
     }
 
     @PutMapping("authors/{authorId}/update")
@@ -108,19 +118,34 @@ public class LibraryController {
         return new ResponseEntity<>(authorService.updateAuthor(id, authorDto), HttpStatus.OK);
     }
 
+    @PutMapping("books/{bookId}/update")
+    public ResponseEntity<BookDto> updateBook(@PathVariable("bookId") long id, @RequestBody BookDto bookDto) {
+        return new ResponseEntity<>(bookService.updateBook(id, bookDto), HttpStatus.OK);
+    }
+
+    @PutMapping("authors/{authorId}/books/{bookId}/update")
+    public ResponseEntity<BookDto> updateBook(@PathVariable("authorId") long authorId, @PathVariable("bookId") long bookId, @RequestBody BookDto bookDto) {
+        return new ResponseEntity<>(bookService.updateBook(bookId, bookDto), HttpStatus.OK);
+    }
+
     @PutMapping("books/{bookId}/reviews/{reviewId}/update")
     public ResponseEntity<ReviewDto> updateReview(@PathVariable("bookId") long bookId, @PathVariable("reviewId") long reviewId, @RequestBody ReviewDto reviewDto) {
         return new ResponseEntity<>(reviewService.updateReview(reviewId, reviewDto), HttpStatus.OK);
     }
 
-    @DeleteMapping("books/{bookId}/delete")
-    public ResponseEntity<BookDto> deleteBook(@PathVariable("bookId") long id) {
-        return new ResponseEntity<>(bookService.deleteBook(id), HttpStatus.ACCEPTED);
+    @PutMapping("authors/{authorId}/books/{bookId}/reviews/{reviewId}/update")
+    public ResponseEntity<ReviewDto> updateReview(@PathVariable("authorId") long authorId, @PathVariable("bookId") long bookId, @PathVariable("reviewId") long reviewId, @RequestBody ReviewDto reviewDto) {
+        return new ResponseEntity<>(reviewService.updateReview(reviewId, reviewDto), HttpStatus.OK);
     }
 
     @DeleteMapping("authors/{authorId}/delete")
     public ResponseEntity<AuthorDto> deleteAuthor(@PathVariable("authorId") long id) {
         return new ResponseEntity<>(authorService.deleteAuthor(id), HttpStatus.ACCEPTED);
+    }
+
+    @DeleteMapping("books/{bookId}/delete")
+    public ResponseEntity<BookDto> deleteBook(@PathVariable("bookId") long id) {
+        return new ResponseEntity<>(bookService.deleteBook(id), HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("books/{bookId}/reviews/{reviewId}/delete")

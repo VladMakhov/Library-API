@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>system</groupId>
-	<artifactId>RESTful library</artifactId>
+	<artifactId>RESTful-Library</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>library</name>
 	<description>library</description>

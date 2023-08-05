@@ -55,8 +55,7 @@ public class BookServiceImpl implements BookService {
         Author author = authorRepository.findById(id).orElseThrow(() ->
                 new AuthorNotFoundException("Author with id=" + id + " not found"));
 
-        Book book = mapToEntity(authorRepository.findById(id)
-                .orElseThrow(() -> new AuthorNotFoundException("Author with id=" + id + " not found")), bookDto);
+        Book book = mapToEntity(author, bookDto);
 
         Book newBook = bookRepository.save(book);
 
