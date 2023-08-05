@@ -9,5 +9,4 @@ public class ReviewDto {
     private long id;
     private String description;
     private int stars;
-    private Book bookId;
 }

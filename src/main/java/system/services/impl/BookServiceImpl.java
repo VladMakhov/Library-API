@@ -39,6 +39,13 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public List<BookDto> getBooksByBook(long id) {
+        Book book = bookRepository.findById(id).orElseThrow(() ->
+                new BookNotFoundException("Book with id=" + id + " not found"));
+        return authorService.getBooksByAuthorId(book.getAuthor().getId());
+    }
+
+    @Override
     public BookDto getBookById(long id) {
         Book book = bookRepository.findById(id).orElseThrow(() ->
                 new BookNotFoundException("Book with id=" + id + " not found"));
