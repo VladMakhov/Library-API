@@ -58,6 +58,19 @@ public class AuthorServiceImpl implements AuthorService {
                 .toList();
     }
 
+    @Override
+    public AuthorDto createAuthor(AuthorDto authorDto) {
+        Author author = new Author();
+        author.setName(authorDto.getName());
+        author.setLastName(authorDto.getLastName());
+        author.setBirthYear(authorDto.getBirthDate());
+
+        Author newAuthor = authorRepository.save(author);
+
+        return mapToDto(newAuthor);
+    }
+
+
     public AuthorDto mapToDto(Author author) {
         AuthorDto authorDto = new AuthorDto();
         authorDto.setId(author.getId());

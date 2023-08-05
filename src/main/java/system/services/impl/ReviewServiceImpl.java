@@ -39,6 +39,15 @@ public class ReviewServiceImpl implements ReviewService {
                 .toList();
     }
 
+    @Override
+    public ReviewDto createReview(long id, ReviewDto reviewDto) {
+        Book book = bookRepository.findById(id).orElseThrow(() ->
+                new BookNotFoundException("Book with id=" + id + " not found"));
+        Review review = mapToEntity(book, reviewDto);
+        Review review1 = reviewRepository.save(review);
+        return mapToDto(review1);
+    }
+
     public ReviewDto mapToDto(Review review) {
         ReviewDto reviewDto = new ReviewDto();
         reviewDto.setId(review.getId());
@@ -46,4 +55,15 @@ public class ReviewServiceImpl implements ReviewService {
         reviewDto.setStars(review.getStars());
         return reviewDto;
     }
+
+    public Review mapToEntity(Book book, ReviewDto reviewDto) {
+        Review review = new Review();
+        review.setId(reviewDto.getId());
+        review.setDescription(reviewDto.getDescription());
+        review.setStars(reviewDto.getStars());
+        review.setBookId(book);
+        return review;
+    }
+
+
 }

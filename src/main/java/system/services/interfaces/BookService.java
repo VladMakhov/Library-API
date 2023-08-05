@@ -13,4 +13,5 @@ public interface BookService {
     BookDto getBookById(long id);
     AuthorDto getAuthorByBookId(long id);
     List<BookDto> getBooksByBook(long id);
+    BookDto createBook(long id, BookDto bookDto);
 }
