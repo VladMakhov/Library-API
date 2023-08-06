@@ -63,8 +63,10 @@ public class AuthorServiceImpl implements AuthorService {
         Author author = new Author();
         author.setName(authorDto.getName());
         author.setLastName(authorDto.getLastName());
-        author.setBirthYear(authorDto.getBirthDate());
-
+        author.setNationality(authorDto.getNationality());
+        author.setBirthYear(authorDto.getBirthYear());
+        author.setBirthCity(authorDto.getBirthCity());
+        author.setOccupation(authorDto.getOccupation());
         Author newAuthor = authorRepository.save(author);
 
         return mapToDto(newAuthor);
@@ -76,7 +78,10 @@ public class AuthorServiceImpl implements AuthorService {
                 new AuthorNotFoundException("Author with id=" + id + " not found"));
         author.setName(authorDto.getName());
         author.setLastName(authorDto.getLastName());
-        author.setBirthYear(authorDto.getBirthDate());
+        author.setNationality(authorDto.getNationality());
+        author.setBirthYear(authorDto.getBirthYear());
+        author.setBirthCity(authorDto.getBirthCity());
+        author.setOccupation(authorDto.getOccupation());
         authorRepository.save(author);
         return mapToDto(author);
     }
@@ -96,7 +101,10 @@ public class AuthorServiceImpl implements AuthorService {
         authorDto.setId(author.getId());
         authorDto.setName(author.getName());
         authorDto.setLastName(author.getLastName());
-        authorDto.setBirthDate(author.getBirthYear());
+        authorDto.setNationality(author.getNationality());
+        authorDto.setBirthYear(author.getBirthYear());
+        authorDto.setBirthCity(author.getBirthCity());
+        authorDto.setOccupation(author.getOccupation());
         return authorDto;
     }
 }

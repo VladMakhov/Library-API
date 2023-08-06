@@ -21,8 +21,23 @@ public class Author {
 
     private String lastName;
 
+    private String Nationality;
+
     private int birthYear;
+
+    private String birthCity;
+
+    private String Occupation;
 
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
     private List<Book> bookList;
+
+    public Author(String name, String lastName, String nationality, int birthYear, String birthCity, String occupation) {
+        this.name = name;
+        this.lastName = lastName;
+        this.Nationality = nationality;
+        this.birthYear = birthYear;
+        this.birthCity = birthCity;
+        this.Occupation = occupation;
+    }
 }

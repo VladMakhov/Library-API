@@ -12,5 +12,8 @@ public class AuthorDto {
     private long id;
     private String name;
     private String lastName;
-    private int birthDate;
+    private String Nationality;
+    private int birthYear;
+    private String birthCity;
+    private String Occupation;
 }
