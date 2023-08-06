@@ -1,4 +1,4 @@
-package system.exceptions;
+package system.exceptions.notFoundExceptions;
 
 public class BookNotFoundException extends RuntimeException {
     private static final long SERIAL_VERSION_UID = 1;

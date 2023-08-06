@@ -10,5 +10,4 @@ public interface ReviewService {
     ReviewDto createReview(long id, ReviewDto reviewDto);
     ReviewDto updateReview(long id, ReviewDto reviewDto);
     ReviewDto deleteReview(long id);
-
 }

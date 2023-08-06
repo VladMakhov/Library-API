@@ -2,16 +2,14 @@ package system.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import system.dto.BookDto;
 import system.dto.ReviewDto;
-import system.exceptions.BookNotFoundException;
-import system.exceptions.ReviewNotFoundException;
+import system.exceptions.notFoundExceptions.BookNotFoundException;
+import system.exceptions.notFoundExceptions.ReviewNotFoundException;
 import system.models.Book;
 import system.models.Review;
 import system.repositorys.AuthorRepository;
 import system.repositorys.BookRepository;
 import system.repositorys.ReviewRepository;
-import system.services.interfaces.AuthorService;
 import system.services.interfaces.ReviewService;
 
 import java.util.List;
@@ -19,13 +17,11 @@ import java.util.List;
 @Service
 public class ReviewServiceImpl implements ReviewService {
 
-    private final AuthorRepository authorRepository;
     private final BookRepository bookRepository;
     private final ReviewRepository reviewRepository;
 
     @Autowired
-    public ReviewServiceImpl(AuthorRepository authorRepository, BookRepository bookRepository, ReviewRepository reviewRepository) {
-        this.authorRepository = authorRepository;
+    public ReviewServiceImpl(BookRepository bookRepository, ReviewRepository reviewRepository) {
         this.bookRepository = bookRepository;
         this.reviewRepository = reviewRepository;
     }
@@ -94,6 +90,5 @@ public class ReviewServiceImpl implements ReviewService {
         review.setBookId(book);
         return review;
     }
-
 
 }

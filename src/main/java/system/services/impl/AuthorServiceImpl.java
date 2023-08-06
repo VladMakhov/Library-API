@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import system.dto.AuthorDto;
 import system.dto.BookDto;
-import system.exceptions.AuthorNotFoundException;
+import system.exceptions.notFoundExceptions.AuthorNotFoundException;
 import system.models.Author;
 import system.models.Book;
 import system.repositorys.AuthorRepository;
@@ -68,7 +68,6 @@ public class AuthorServiceImpl implements AuthorService {
         author.setBirthCity(authorDto.getBirthCity());
         author.setOccupation(authorDto.getOccupation());
         Author newAuthor = authorRepository.save(author);
-
         return mapToDto(newAuthor);
     }
 

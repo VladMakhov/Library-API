@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import system.dto.AuthorDto;
 import system.dto.BookDto;
-import system.exceptions.AuthorNotFoundException;
-import system.exceptions.BookNotFoundException;
+import system.exceptions.notFoundExceptions.AuthorNotFoundException;
+import system.exceptions.notFoundExceptions.BookNotFoundException;
 import system.models.Author;
 import system.models.Book;
 import system.repositorys.AuthorRepository;
@@ -56,9 +56,7 @@ public class BookServiceImpl implements BookService {
                 new AuthorNotFoundException("Author with id=" + id + " not found"));
 
         Book book = mapToEntity(author, bookDto);
-
         Book newBook = bookRepository.save(book);
-
         return mapToDto(newBook);
     }
 
@@ -68,13 +66,11 @@ public class BookServiceImpl implements BookService {
                 new AuthorNotFoundException("Author with id=" + id + " not found"));
         Author author = authorRepository.findById(book.getAuthor().getId()).
                 orElseThrow(() -> new AuthorNotFoundException("Author with id=" + id + " not found"));
-
         book.setBookName(bookDto.getBookName());
         book.setYear(bookDto.getYear());
         book.setAuthor(author);
         bookRepository.save(book);
         return mapToDto(book);
-
     }
 
     @Override

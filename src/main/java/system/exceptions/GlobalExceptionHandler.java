@@ -5,6 +5,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
+import system.exceptions.notFoundExceptions.AuthorNotFoundException;
+import system.exceptions.notFoundExceptions.BookNotFoundException;
+import system.exceptions.notFoundExceptions.ReviewNotFoundException;
 
 import java.util.Date;
 

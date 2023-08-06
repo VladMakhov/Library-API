@@ -1,4 +1,4 @@
-package system.exceptions;
+package system.exceptions.notFoundExceptions;
 
 
 public class ReviewNotFoundException extends RuntimeException {
