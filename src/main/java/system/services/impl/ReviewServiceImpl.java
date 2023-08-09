@@ -2,12 +2,11 @@ package system.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import system.dto.ReviewDto;
+import system.models.dto.ReviewDto;
 import system.exceptions.notFoundExceptions.BookNotFoundException;
 import system.exceptions.notFoundExceptions.ReviewNotFoundException;
 import system.models.Book;
 import system.models.Review;
-import system.repositorys.AuthorRepository;
 import system.repositorys.BookRepository;
 import system.repositorys.ReviewRepository;
 import system.services.interfaces.ReviewService;

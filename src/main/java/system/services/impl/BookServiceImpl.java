@@ -2,8 +2,8 @@ package system.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import system.dto.AuthorDto;
-import system.dto.BookDto;
+import system.models.dto.AuthorDto;
+import system.models.dto.BookDto;
 import system.exceptions.notFoundExceptions.AuthorNotFoundException;
 import system.exceptions.notFoundExceptions.BookNotFoundException;
 import system.models.Author;

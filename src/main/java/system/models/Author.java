@@ -2,6 +2,7 @@ package system.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "authors")
 public class Author {
@@ -21,13 +23,13 @@ public class Author {
 
     private String lastName;
 
-    private String Nationality;
+    private String nationality;
 
     private int birthYear;
 
     private String birthCity;
 
-    private String Occupation;
+    private String occupation;
 
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
     private List<Book> bookList;
@@ -35,9 +37,9 @@ public class Author {
     public Author(String name, String lastName, String nationality, int birthYear, String birthCity, String occupation) {
         this.name = name;
         this.lastName = lastName;
-        this.Nationality = nationality;
+        this.nationality = nationality;
         this.birthYear = birthYear;
         this.birthCity = birthCity;
-        this.Occupation = occupation;
+        this.occupation = occupation;
     }
 }

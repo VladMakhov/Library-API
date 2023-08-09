@@ -1,6 +1,6 @@
 package system.services.interfaces;
 
-import system.dto.ReviewDto;
+import system.models.dto.ReviewDto;
 
 import java.util.List;
 
