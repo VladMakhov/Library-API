@@ -1,4 +1,4 @@
-package system.services.interfaces;
+package system.services;
 
 import system.models.dto.ReviewDto;
 

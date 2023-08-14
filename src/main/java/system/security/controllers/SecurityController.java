@@ -49,7 +49,7 @@ public class SecurityController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<?> singup(@RequestBody SignupRequest signupRequest) {
+    public ResponseEntity<?> signup(@RequestBody SignupRequest signupRequest) {
         if (userRepository.existsByUsername(signupRequest.getUsername())) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Choose different name");
         }
@@ -66,18 +66,18 @@ public class SecurityController {
     }
 
     public @PostMapping("/signin")
-    ResponseEntity<?> singin(@RequestBody SigninRequest signinRequest) {
-        Authentication authentication;
+    ResponseEntity<?> signin(@RequestBody SigninRequest signinRequest) {
+        Authentication authentication = null;
         try {
             authentication = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(signinRequest.getPassword(), signinRequest.getUsername()));
-        } catch (BadCredentialsException e) {
+                    new UsernamePasswordAuthenticationToken(signinRequest.getUsername(), signinRequest.getPassword()));
+            System.out.println(authentication);
+        } catch (RuntimeException e) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtCore.generateToken(authentication);
         return ResponseEntity.ok(jwt);
-
     }
 
 }

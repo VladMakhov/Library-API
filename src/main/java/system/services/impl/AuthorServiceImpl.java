@@ -10,7 +10,7 @@ import system.models.Author;
 import system.models.Book;
 import system.repositorys.AuthorRepository;
 import system.repositorys.BookRepository;
-import system.services.interfaces.AuthorService;
+import system.services.AuthorService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,14 +46,8 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public List<BookDto> getBooksByAuthorId(long id) {
-        List<Book> list = bookRepository.findAll();
-        List<Book> specific = new ArrayList<>();
-        for (Book b : list) {
-            if (b.getAuthor().getId() == id) {
-                specific.add(b);
-            }
-        }
-        return specific.stream()
+        return bookRepository.findAll().stream()
+                .filter(book -> book.getAuthor().getId() == id)
                 .map(bookService::mapToDto)
                 .toList();
     }

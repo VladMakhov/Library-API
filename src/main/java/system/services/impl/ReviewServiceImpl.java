@@ -9,7 +9,7 @@ import system.models.Book;
 import system.models.Review;
 import system.repositorys.BookRepository;
 import system.repositorys.ReviewRepository;
-import system.services.interfaces.ReviewService;
+import system.services.ReviewService;
 
 import java.util.List;
 

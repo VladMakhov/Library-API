@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import system.models.dto.AuthorDto;
 import system.models.dto.BookDto;
-import system.services.interfaces.BookService;
+import system.services.BookService;
 
 import java.util.List;
 

@@ -10,7 +10,7 @@ import system.models.Author;
 import system.models.Book;
 import system.repositorys.AuthorRepository;
 import system.repositorys.BookRepository;
-import system.services.interfaces.BookService;
+import system.services.BookService;
 
 import java.util.List;
 
