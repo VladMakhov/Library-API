@@ -3,12 +3,9 @@ package system;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import system.models.Author;
-import system.models.Book;
-import system.models.Review;
-import system.repositorys.AuthorRepository;
-import system.repositorys.BookRepository;
-import system.repositorys.ReviewRepository;
+import system.repository.AuthorRepository;
+import system.repository.BookRepository;
+import system.repository.ReviewRepository;
 
 @SpringBootApplication
 public class LibraryApplication {
