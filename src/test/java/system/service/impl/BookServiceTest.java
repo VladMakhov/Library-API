@@ -15,6 +15,7 @@ import system.repository.AuthorRepository;
 import system.repository.BookRepository;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.mockito.Mockito.when;
@@ -62,22 +63,26 @@ class BookServiceTest {
 
     @Test
     void getAllBooks() {
-        when(bookRepository.findAll()).thenReturn(new ArrayList<>());
-        Assertions.assertNotNull(bookService.getAllBooks());
+        List<Book> get = new ArrayList<>();
+        get.add(book);
+        when(bookRepository.findAll()).thenReturn(get);
+        List<BookDto> expected = new ArrayList<>();
+        expected.add(bookDto);
+        Assertions.assertEquals(expected, bookService.getAllBooks());
     }
 
     @Test
     void createBook() {
         when(authorRepository.findById(author.getId())).thenReturn(Optional.ofNullable(author));
         when(bookRepository.save(Mockito.any(Book.class))).thenReturn(book);
-        Assertions.assertNotNull(bookService.createBook(author.getId(), bookDto));
+        Assertions.assertEquals(bookDto, bookService.createBook(author.getId(), bookDto));
     }
 
     @Test
     void updateBook() {
         when(bookRepository.findById(author.getId())).thenReturn(Optional.ofNullable(book));
         when(authorRepository.findById(author.getId())).thenReturn(Optional.ofNullable(author));
-        Assertions.assertNotNull(bookService.updateBook(author.getId(), bookDto));
+        Assertions.assertEquals(bookDto, bookService.updateBook(author.getId(), bookDto));
     }
 
     @Test

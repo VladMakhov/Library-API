@@ -11,10 +11,13 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import system.model.Author;
 import system.model.Book;
 import system.model.Review;
+import system.model.dto.BookDto;
 import system.model.dto.ReviewDto;
 import system.repository.BookRepository;
 import system.repository.ReviewRepository;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.mockito.Mockito.when;
@@ -31,7 +34,12 @@ public class ReviewServiceTest {
     @InjectMocks
     private ReviewServiceImpl reviewService;
 
+    @InjectMocks
+    private BookServiceImpl bookService;
+
     private Book book;
+
+    private BookDto bookDto;
 
     private Review review;
 
@@ -63,27 +71,40 @@ public class ReviewServiceTest {
                 .bookId(book)
                 .build();
 
+        List<Review> list = new ArrayList<>();
+        list.add(review);
+        book.setReviewList(list);
+        bookDto = bookService.mapToDto(book);
         reviewDto = reviewService.mapToDto(review);
+    }
+
+    @Test
+    void getReviewByBookId() {
+        Mockito.when(bookRepository.findById(book.getId())).thenReturn(Optional.ofNullable(book));
+        List<ReviewDto> expected = book.getReviewList().stream()
+                .map(reviewService::mapToDto)
+                .toList();
+        Assertions.assertEquals(expected, reviewService.getReviewByBookId(book.getId()));
     }
 
     @Test
     void getReviewById() {
         Mockito.when(reviewRepository.findById(review.getId())).thenReturn(Optional.ofNullable(review));
-        Assertions.assertNotNull(reviewService.getReviewById(review.getId()));
+        Assertions.assertEquals(reviewDto, reviewService.getReviewById(review.getId()));
     }
 
     @Test
     void createReview() {
         Mockito.when(bookRepository.findById(book.getId())).thenReturn(Optional.ofNullable(book));
         Mockito.when(reviewRepository.save(Mockito.any(Review.class))).thenReturn(review);
-        Assertions.assertNotNull(reviewService.createReview(book.getId(), reviewDto));
+        Assertions.assertEquals(reviewDto, reviewService.createReview(book.getId(), reviewDto));
     }
 
     @Test
     void updateReview() {
         when(bookRepository.findById(book.getId())).thenReturn(Optional.ofNullable(book));
         when(reviewRepository.findById(review.getId())).thenReturn(Optional.ofNullable(review));
-        Assertions.assertNotNull(reviewService.updateReview(book.getId(), reviewDto));
+        Assertions.assertEquals(reviewDto, reviewService.updateReview(book.getId(), reviewDto));
     }
 
     @Test
