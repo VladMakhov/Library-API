@@ -86,7 +86,6 @@ public class AuthorServiceImpl implements AuthorService {
         return authorDto;
     }
 
-
     public AuthorDto mapToDto(Author author) {
         AuthorDto authorDto = new AuthorDto();
         authorDto.setId(author.getId());
