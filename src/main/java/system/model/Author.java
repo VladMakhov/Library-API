@@ -40,4 +40,14 @@ public class Author {
         this.birthCity = birthCity;
         this.occupation = occupation;
     }
+
+    public Author(long id, String name, String lastName, String nationality, int birthYear, String birthCity, String occupation) {
+        this.id = id;
+        this.name = name;
+        this.lastName = lastName;
+        this.nationality = nationality;
+        this.birthYear = birthYear;
+        this.birthCity = birthCity;
+        this.occupation = occupation;
+    }
 }

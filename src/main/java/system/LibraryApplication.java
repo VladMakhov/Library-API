@@ -17,7 +17,6 @@ public class LibraryApplication {
     private static BookRepository bookRepository;
     private static ReviewRepository reviewRepository;
 
-
     @Autowired
     public LibraryApplication(AuthorRepository authorRepository, BookRepository bookRepository, ReviewRepository reviewRepository) {
         this.authorRepository = authorRepository;
@@ -28,7 +27,6 @@ public class LibraryApplication {
     public static void main(String[] args) {
 
         SpringApplication.run(LibraryApplication.class, args);
-
 
         Author Pushkin = new Author("Alexander", "Pushkin", "Russian", 1799, "Moscow", "Poet");
         Author Gogol = new Author("Nikolai", "Gogol", "Ukrainian", 1809, "Velyki Sorochyntsi", "Novelist");
