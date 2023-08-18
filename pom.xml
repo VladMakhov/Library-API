@@ -16,6 +16,8 @@
     <properties>
         <java.version>17</java.version>
         <jwt.version>0.11.5</jwt.version>
+        <rest-assured.version>5.3.1</rest-assured.version>
+        <mockito.version>5.4.0</mockito.version>
     </properties>
     <dependencies>
         <dependency>
@@ -28,7 +30,15 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-<!--        <dependency>-->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.8.0</version>
+            <scope>test</scope>
+        </dependency>
+
+
+        <!--        <dependency>-->
 <!--            <groupId>org.springframework.boot</groupId>-->
 <!--            <artifactId>spring-boot-starter-security</artifactId>-->
 <!--        </dependency>-->
@@ -80,14 +90,21 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>5.4.0</version>
+            <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
-            <version>5.3.1</version>
+            <version>${rest-assured.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>spring-mock-mvc</artifactId>
+            <version>${rest-assured.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
