@@ -1,6 +1,5 @@
 package system.Integration;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,8 +17,6 @@ import system.service.impl.ReviewServiceImpl;
 
 import java.util.List;
 
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
 @SpringBootTest
@@ -81,15 +78,16 @@ public class ReviewControllerIntegrationTest {
     }
 
     @Test
-    public void getReviewById() throws JsonProcessingException {
-        String object = objectMapper.writeValueAsString(reviewService.getReviewById(1));
-        given()
-                .baseUri("http://localhost")
-                .port(8080)
-                .when()
-                .get("/library/books/1/reviews/1")
-                .then()
-                .statusCode(302)
-                .body(equalTo(object));
+    public void getReviewById() throws Exception {
+        ReviewDto expected = reviewService.getReviewById(1);
+        String object = objectMapper.writeValueAsString(expected);
+
+        mockMvc.perform(MockMvcRequestBuilders.get("http://localhost/library/books/1/reviews/1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(object))
+                .andExpect(MockMvcResultMatchers.status().isFound())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.description").value(expected.getDescription()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.stars").value(expected.getStars()))
+                .andDo(print());
     }
 }

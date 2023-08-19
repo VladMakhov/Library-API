@@ -1,6 +1,5 @@
 package system.Integration;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,12 +13,11 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import system.model.dto.AuthorDto;
+import system.model.dto.BookDto;
 import system.service.impl.AuthorServiceImpl;
 
 import java.util.List;
 
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
 
@@ -34,7 +32,6 @@ public class AuthorControllerIntegrationTest {
     @Autowired
     private AuthorServiceImpl authorService;
 
-
     @Autowired
     private ObjectMapper objectMapper;
 
@@ -43,15 +40,14 @@ public class AuthorControllerIntegrationTest {
     @BeforeEach
     public void init() {
         authorDto = AuthorDto.builder()
-                .name("test")
-                .lastName("test")
-                .birthCity("test")
+                .name("name")
+                .lastName("lastName")
+                .birthCity("birthCity")
                 .birthYear(1)
-                .nationality("test")
-                .occupation("test")
+                .nationality("nationality")
+                .occupation("occupation")
                 .build();
     }
-
 
     @Test
     public void createAndDeleteAuthor() throws Exception {
@@ -88,43 +84,46 @@ public class AuthorControllerIntegrationTest {
     }
 
     @Test
-    public void getBooksByAuthor() throws JsonProcessingException {
-        String object = objectMapper.writeValueAsString(authorService.getBooksByAuthorId(1));
-        given()
-                .baseUri("http://localhost")
-                .port(8080)
-                .when()
-                .get("/library/authors/1/books")
-                .then()
-                .statusCode(302)
-                .body(equalTo(object));
+    public void getBooksByAuthor() throws Exception {
+        List<BookDto> expected = authorService.getBooksByAuthorId(1);
+        String object = objectMapper.writeValueAsString(expected);
+
+        mockMvc.perform(MockMvcRequestBuilders.get("http://localhost/library/authors/1/books")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(object))
+                .andExpect(MockMvcResultMatchers.status().isFound())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.size()").value(expected.size()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].bookName").value(expected.get(0).getBookName()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].year").value(expected.get(0).getYear()))
+                .andDo(print());
     }
 
     @Test
-    public void getAllAuthors() throws JsonProcessingException {
-        String object = objectMapper.writeValueAsString(authorService.getAllAuthors());
+    public void getAllAuthors() throws Exception {
+        List<AuthorDto> expected = authorService.getAllAuthors();
+        String object = objectMapper.writeValueAsString(expected);
 
-        given()
-                .baseUri("http://localhost")
-                .port(8080)
-                .when()
-                .get("/library/authors")
-                .then()
-                .statusCode(302)
-                .body(equalTo(object));
+        mockMvc.perform(MockMvcRequestBuilders.get("http://localhost/library/authors")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(object))
+                .andExpect(MockMvcResultMatchers.status().isFound())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.size()").value(expected.size()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].name").value(expected.get(0).getName()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].lastName").value(expected.get(0).getLastName()))
+                .andDo(print());
     }
 
     @Test
-    public void getAuthorById() throws JsonProcessingException {
-        String object = objectMapper.writeValueAsString(authorService.getAllAuthors().get(0));
-        given()
-                .baseUri("http://localhost")
-                .port(8080)
-                .when()
-                .get("/library/authors/1")
-                .then()
-                .statusCode(302)
-                .body(equalTo(object));
-    }
+    public void getAuthorById() throws Exception {
+        AuthorDto expected = authorService.getAllAuthors().get(0);
+        String object = objectMapper.writeValueAsString(expected);
 
+        mockMvc.perform(MockMvcRequestBuilders.get("http://localhost/library/authors/1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(object))
+                .andExpect(MockMvcResultMatchers.status().isFound())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(expected.getName()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.lastName").value(expected.getLastName()))
+                .andDo(print());
+    }
 }

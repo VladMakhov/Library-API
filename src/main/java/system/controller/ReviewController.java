@@ -26,12 +26,12 @@ public class ReviewController {
     }
 
     @GetMapping("books/{bookId}/reviews")
-    public ResponseEntity<List<ReviewDto>> getBookReview(@PathVariable("bookId") long id) {
+    public ResponseEntity<List<ReviewDto>> getBookReviews(@PathVariable("bookId") long id) {
         return new ResponseEntity<>(reviewService.getReviewByBookId(id), HttpStatus.FOUND);
     }
 
     @GetMapping("authors/{authorId}/books/{bookId}/reviews")
-    public ResponseEntity<List<ReviewDto>> getBookReview(@PathVariable("authorId") long authorId, @PathVariable("bookId") long id) {
+    public ResponseEntity<List<ReviewDto>> getBookReviews(@PathVariable("authorId") long authorId, @PathVariable("bookId") long id) {
         return new ResponseEntity<>(reviewService.getReviewByBookId(id), HttpStatus.FOUND);
     }
 

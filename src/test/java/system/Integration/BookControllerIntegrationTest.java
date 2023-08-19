@@ -1,6 +1,5 @@
 package system.Integration;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,13 +12,12 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import system.model.dto.AuthorDto;
 import system.model.dto.BookDto;
 import system.service.impl.BookServiceImpl;
 
 import java.util.List;
 
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
 @SpringBootTest
@@ -41,10 +39,11 @@ public class BookControllerIntegrationTest {
     @BeforeEach
     public void init() {
         bookDto = BookDto.builder()
-                .bookName("test")
+                .bookName("bookName")
                 .year(1)
                 .build();
     }
+
     @Test
     public void updateBook() throws Exception {
         BookDto book = bookService.getBookById(1);
@@ -68,7 +67,6 @@ public class BookControllerIntegrationTest {
                 .andDo(print());
 
         List<BookDto> list = bookService.getAllBooks();
-
         long id = list.get(list.size() - 1).getId();
         String url = "http://localhost/library/authors/1/books/" + id + "/delete";
 
@@ -80,54 +78,59 @@ public class BookControllerIntegrationTest {
     }
 
     @Test
-    public void getAllBooks() throws JsonProcessingException {
-        String object = objectMapper.writeValueAsString(bookService.getAllBooks());
-        given()
-                .baseUri("http://localhost")
-                .port(8080)
-                .when()
-                .get("/library/books")
-                .then()
-                .statusCode(302)
-                .body(equalTo(object));
+    public void getAllBooks() throws Exception {
+        List<BookDto> expected = bookService.getAllBooks();
+        String object = objectMapper.writeValueAsString(expected);
+
+        mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:8080/library/books")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(object))
+                .andExpect(MockMvcResultMatchers.status().isFound())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.size()").value(expected.size()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].bookName").value(expected.get(0).getBookName()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].year").value(expected.get(0).getYear()))
+                .andDo(print());
     }
 
     @Test
-    public void getBookById() throws JsonProcessingException {
-        String object = objectMapper.writeValueAsString(bookService.getAllBooks().get(0));
-        given()
-                .baseUri("http://localhost")
-                .port(8080)
-                .when()
-                .get("/library/books/1")
-                .then()
-                .statusCode(302)
-                .body(equalTo(object));
+    public void getBookById() throws Exception {
+        BookDto expected = bookService.getBookById(1);
+        String object = objectMapper.writeValueAsString(expected);
+
+        mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:8080/library/books/1")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(object))
+                .andExpect(MockMvcResultMatchers.status().isFound())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.bookName").value(expected.getBookName()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.year").value(expected.getYear()))
+                .andDo(print());
     }
 
     @Test
-    public void getBooksByAuthorId() throws JsonProcessingException {
-        String object = objectMapper.writeValueAsString(bookService.getAuthorByBookId(1));
-        given()
-                .baseUri("http://localhost")
-                .port(8080)
-                .when()
-                .get("/library/books/1/author")
-                .then()
-                .statusCode(302)
-                .body(equalTo(object));
+    public void getAuthorByBookId() throws Exception {
+        AuthorDto expected = bookService.getAuthorByBookId(1);
+        String object = objectMapper.writeValueAsString(expected);
+
+        mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:8080/library/books/1/author")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(object))
+                .andExpect(MockMvcResultMatchers.status().isFound())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(expected.getName()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.lastName").value(expected.getLastName()))
+                .andDo(print());
     }
 
     @Test
-    public void getBooksByBook() throws JsonProcessingException {
-        String object = objectMapper.writeValueAsString(bookService.getBooksByBook(1));
-        given()
-                .baseUri("http://localhost")
-                .port(8080)
-                .when()
-                .get("/library/books/1/author/books")
-                .then()
-                .statusCode(302)
-                .body(equalTo(object));
+    public void getBooksByBook() throws Exception {
+        List<BookDto> expected = bookService.getBooksByBook(1);
+        String object = objectMapper.writeValueAsString(expected);
+
+        mockMvc.perform(MockMvcRequestBuilders.get("http://localhost/library/books/1/author/books")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(object))
+                .andExpect(MockMvcResultMatchers.status().isFound())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].bookName").value(expected.get(0).getBookName()))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.[0].year").value(expected.get(0).getYear()))
+                .andDo(print());
     }
 }
