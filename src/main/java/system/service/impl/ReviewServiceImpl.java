@@ -94,5 +94,4 @@ public class ReviewServiceImpl implements ReviewService {
         review.setBookId(book);
         return review;
     }
-
 }

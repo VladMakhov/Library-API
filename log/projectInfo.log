@@ -1,0 +1,58 @@
+2023-08-19 16:22:43,097 INFO  [main] AnnotationConfigContextLoaderUtils: Could not detect default configuration classes for test class [system.intg.AuthorControllerIntegrationTest]: AuthorControllerIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-08-19 16:22:43,183 INFO  [main] SpringBootTestContextBootstrapper: Found @SpringBootConfiguration system.LibraryApplication for test class system.intg.AuthorControllerIntegrationTest
+2023-08-19 16:22:43,450 INFO  [main] AuthorControllerIntegrationTest: Starting AuthorControllerIntegrationTest using Java 17.0.8 with PID 6352 (started by root in C:\Program Files\IntelliJ IDEA 2023.2\IdeaProjects\Archive\RESTful-Library)
+2023-08-19 16:22:43,461 INFO  [main] AuthorControllerIntegrationTest: No active profile set, falling back to 1 default profile: "default"
+2023-08-19 16:22:44,015 INFO  [main] RepositoryConfigurationDelegate: Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-19 16:22:44,071 INFO  [main] RepositoryConfigurationDelegate: Finished Spring Data repository scanning in 46 ms. Found 3 JPA repository interfaces.
+2023-08-19 16:22:44,393 INFO  [main] LogHelper: HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-19 16:22:44,449 INFO  [main] Version: HHH000412: Hibernate ORM core version 6.2.6.Final
+2023-08-19 16:22:44,452 INFO  [main] Environment: HHH000406: Using bytecode reflection optimizer
+2023-08-19 16:22:44,538 INFO  [main] BytecodeProviderInitiator: HHH000021: Bytecode provider name : bytebuddy
+2023-08-19 16:22:44,542 INFO  [main] SpringPersistenceUnitInfo: No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-19 16:22:44,551 INFO  [main] HikariDataSource: HikariPool-1 - Starting...
+2023-08-19 16:22:44,763 INFO  [main] HikariPool: HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1ad9d5be
+2023-08-19 16:22:44,764 INFO  [main] HikariDataSource: HikariPool-1 - Start completed.
+2023-08-19 16:22:44,993 INFO  [main] BytecodeProviderInitiator: HHH000021: Bytecode provider name : bytebuddy
+2023-08-19 16:22:45,370 INFO  [main] JtaPlatformInitiator: HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-19 16:22:45,411 INFO  [main] LocalContainerEntityManagerFactoryBean: Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-19 16:22:45,753 WARN  [main] JpaBaseConfiguration$JpaWebConfiguration: spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-19 16:22:46,015 INFO  [main] SpringBootMockServletContext: Initializing Spring TestDispatcherServlet ''
+2023-08-19 16:22:46,016 INFO  [main] TestDispatcherServlet: Initializing Servlet ''
+2023-08-19 16:22:46,016 INFO  [main] TestDispatcherServlet: Completed initialization in 0 ms
+2023-08-19 16:22:46,034 INFO  [main] AuthorControllerIntegrationTest: Started AuthorControllerIntegrationTest in 2.731 seconds (process running for 4.577)
+2023-08-19 16:22:46,423 INFO  [main] AnnotationConfigContextLoaderUtils: Could not detect default configuration classes for test class [system.intg.ReviewControllerIntegrationTest]: ReviewControllerIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-08-19 16:22:46,425 INFO  [main] SpringBootTestContextBootstrapper: Found @SpringBootConfiguration system.LibraryApplication for test class system.intg.ReviewControllerIntegrationTest
+2023-08-19 16:22:46,500 INFO  [main] AnnotationConfigContextLoaderUtils: Could not detect default configuration classes for test class [system.intg.BookControllerIntegrationTest]: BookControllerIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-08-19 16:22:46,502 INFO  [main] SpringBootTestContextBootstrapper: Found @SpringBootConfiguration system.LibraryApplication for test class system.intg.BookControllerIntegrationTest
+2023-08-19 16:22:46,685 INFO  [SpringApplicationShutdownHook] LocalContainerEntityManagerFactoryBean: Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-19 16:22:46,686 INFO  [SpringApplicationShutdownHook] HikariDataSource: HikariPool-1 - Shutdown initiated...
+2023-08-19 16:22:46,692 INFO  [SpringApplicationShutdownHook] HikariDataSource: HikariPool-1 - Shutdown completed.
+2023-08-19 16:24:50,243 INFO  [main] AnnotationConfigContextLoaderUtils: Could not detect default configuration classes for test class [system.intg.AuthorControllerIntegrationTest]: AuthorControllerIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-08-19 16:24:50,321 INFO  [main] SpringBootTestContextBootstrapper: Found @SpringBootConfiguration system.LibraryApplication for test class system.intg.AuthorControllerIntegrationTest
+2023-08-19 16:24:50,571 INFO  [main] AuthorControllerIntegrationTest: Starting AuthorControllerIntegrationTest using Java 17.0.8 with PID 9404 (started by root in C:\Program Files\IntelliJ IDEA 2023.2\IdeaProjects\Archive\RESTful-Library)
+2023-08-19 16:24:50,572 INFO  [main] AuthorControllerIntegrationTest: No active profile set, falling back to 1 default profile: "default"
+2023-08-19 16:24:51,121 INFO  [main] RepositoryConfigurationDelegate: Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-19 16:24:51,174 INFO  [main] RepositoryConfigurationDelegate: Finished Spring Data repository scanning in 47 ms. Found 3 JPA repository interfaces.
+2023-08-19 16:24:51,474 INFO  [main] LogHelper: HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-19 16:24:51,509 INFO  [main] Version: HHH000412: Hibernate ORM core version 6.2.6.Final
+2023-08-19 16:24:51,511 INFO  [main] Environment: HHH000406: Using bytecode reflection optimizer
+2023-08-19 16:24:51,646 INFO  [main] BytecodeProviderInitiator: HHH000021: Bytecode provider name : bytebuddy
+2023-08-19 16:24:51,744 INFO  [main] SpringPersistenceUnitInfo: No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-08-19 16:24:51,757 INFO  [main] HikariDataSource: HikariPool-1 - Starting...
+2023-08-19 16:24:51,972 INFO  [main] HikariPool: HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@40a28bda
+2023-08-19 16:24:51,974 INFO  [main] HikariDataSource: HikariPool-1 - Start completed.
+2023-08-19 16:24:52,174 INFO  [main] BytecodeProviderInitiator: HHH000021: Bytecode provider name : bytebuddy
+2023-08-19 16:24:52,617 INFO  [main] JtaPlatformInitiator: HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-19 16:24:52,661 INFO  [main] LocalContainerEntityManagerFactoryBean: Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-19 16:24:52,994 WARN  [main] JpaBaseConfiguration$JpaWebConfiguration: spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-08-19 16:24:53,242 INFO  [main] SpringBootMockServletContext: Initializing Spring TestDispatcherServlet ''
+2023-08-19 16:24:53,242 INFO  [main] TestDispatcherServlet: Initializing Servlet ''
+2023-08-19 16:24:53,243 INFO  [main] TestDispatcherServlet: Completed initialization in 1 ms
+2023-08-19 16:24:53,263 INFO  [main] AuthorControllerIntegrationTest: Started AuthorControllerIntegrationTest in 2.845 seconds (process running for 3.665)
+2023-08-19 16:24:53,908 INFO  [main] AnnotationConfigContextLoaderUtils: Could not detect default configuration classes for test class [system.intg.ReviewControllerIntegrationTest]: ReviewControllerIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-08-19 16:24:53,910 INFO  [main] SpringBootTestContextBootstrapper: Found @SpringBootConfiguration system.LibraryApplication for test class system.intg.ReviewControllerIntegrationTest
+2023-08-19 16:24:53,972 INFO  [main] AnnotationConfigContextLoaderUtils: Could not detect default configuration classes for test class [system.intg.BookControllerIntegrationTest]: BookControllerIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-08-19 16:24:53,974 INFO  [main] SpringBootTestContextBootstrapper: Found @SpringBootConfiguration system.LibraryApplication for test class system.intg.BookControllerIntegrationTest
+2023-08-19 16:24:54,079 INFO  [SpringApplicationShutdownHook] LocalContainerEntityManagerFactoryBean: Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-08-19 16:24:54,080 INFO  [SpringApplicationShutdownHook] HikariDataSource: HikariPool-1 - Shutdown initiated...
+2023-08-19 16:24:54,086 INFO  [SpringApplicationShutdownHook] HikariDataSource: HikariPool-1 - Shutdown completed.

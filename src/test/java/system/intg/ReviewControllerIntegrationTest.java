@@ -1,4 +1,4 @@
-package system.Integration;
+package system.intg;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,7 +13,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import system.model.dto.ReviewDto;
-import system.service.impl.ReviewServiceImpl;
+import system.service.ReviewService;
 
 import java.util.List;
 
@@ -28,7 +28,7 @@ public class ReviewControllerIntegrationTest {
     private MockMvc mockMvc;
 
     @Autowired
-    private ReviewServiceImpl reviewService;
+    private ReviewService reviewService;
 
     @Autowired
     private ObjectMapper objectMapper;
