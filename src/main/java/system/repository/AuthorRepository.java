@@ -7,5 +7,4 @@ import system.model.Author;
 
 @Repository
 public interface AuthorRepository extends JpaRepository<Author, Long> {
-    Author findAuthorByNameAndLastName(String name, String listName);
 }
