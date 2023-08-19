@@ -1,4 +1,4 @@
-package system.Integration;
+package system.intg;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,7 +14,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import system.model.dto.AuthorDto;
 import system.model.dto.BookDto;
-import system.service.impl.BookServiceImpl;
+import system.service.BookService;
 
 import java.util.List;
 
@@ -29,7 +29,7 @@ public class BookControllerIntegrationTest {
     private MockMvc mockMvc;
 
     @Autowired
-    private BookServiceImpl bookService;
+    private BookService bookService;
 
     @Autowired
     private ObjectMapper objectMapper;

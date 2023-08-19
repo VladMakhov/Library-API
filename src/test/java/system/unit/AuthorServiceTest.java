@@ -1,4 +1,4 @@
-package system.Unit.service.impl;
+package system.unit;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -75,7 +75,6 @@ class AuthorServiceTest {
     void updateAuthor() {
         Mockito.when(authorRepository.findById(author.getId())).thenReturn(Optional.of(author));
         Mockito.when(authorRepository.save(Mockito.any(Author.class))).thenReturn(author);
-
         Assertions.assertEquals(authorDto, authorService.updateAuthor(authorDto.getId(), authorDto));
     }
 

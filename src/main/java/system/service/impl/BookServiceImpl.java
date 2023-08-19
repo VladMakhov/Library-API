@@ -106,5 +106,4 @@ public class BookServiceImpl implements BookService {
         book.setAuthor(author);
         return book;
     }
-
 }
