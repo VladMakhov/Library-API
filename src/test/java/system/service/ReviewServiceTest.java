@@ -1,4 +1,4 @@
-package system.unit;
+package system.service;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,7 +11,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import system.model.Author;
 import system.model.Book;
 import system.model.Review;
-import system.model.dto.BookDto;
 import system.model.dto.ReviewDto;
 import system.repository.BookRepository;
 import system.repository.ReviewRepository;
@@ -40,8 +39,6 @@ public class ReviewServiceTest {
     private BookServiceImpl bookService;
 
     private Book book;
-
-    private BookDto bookDto;
 
     private Review review;
 
@@ -76,7 +73,6 @@ public class ReviewServiceTest {
         List<Review> list = new ArrayList<>();
         list.add(review);
         book.setReviewList(list);
-        bookDto = bookService.mapToDto(book);
         reviewDto = reviewService.mapToDto(review);
     }
 
