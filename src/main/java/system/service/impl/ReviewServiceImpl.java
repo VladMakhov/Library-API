@@ -1,6 +1,5 @@
 package system.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import system.model.dto.ReviewDto;
 import system.exception.notFoundException.BookNotFoundException;
@@ -19,7 +18,6 @@ public class ReviewServiceImpl implements ReviewService {
     private final BookRepository bookRepository;
     private final ReviewRepository reviewRepository;
 
-    @Autowired
     public ReviewServiceImpl(BookRepository bookRepository, ReviewRepository reviewRepository) {
         this.bookRepository = bookRepository;
         this.reviewRepository = reviewRepository;

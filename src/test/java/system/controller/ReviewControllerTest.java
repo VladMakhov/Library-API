@@ -1,4 +1,4 @@
-package system.intg;
+package system.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @ExtendWith(MockitoExtension.class)
-public class ReviewControllerIntegrationTest {
+public class ReviewControllerTest {
 
     @Autowired
     private MockMvc mockMvc;

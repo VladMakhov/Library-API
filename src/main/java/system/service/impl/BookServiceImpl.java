@@ -1,6 +1,5 @@
 package system.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import system.model.dto.AuthorDto;
 import system.model.dto.BookDto;
@@ -21,7 +20,6 @@ public class BookServiceImpl implements BookService {
     private final AuthorServiceImpl authorService;
     private final AuthorRepository authorRepository;
 
-    @Autowired
     public BookServiceImpl(BookRepository bookRepository, AuthorServiceImpl authorService, AuthorRepository authorRepository) {
         this.bookRepository = bookRepository;
         this.authorService = authorService;
