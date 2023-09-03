@@ -7,6 +7,7 @@ import system.model.dto.BookDto;
 import java.util.List;
 
 public interface AuthorService {
+    List<Object> overview();
     List<AuthorDto> getAllAuthors();
     AuthorDto getAuthorById(long id);
     List<BookDto> getBooksByAuthorId(long id);
