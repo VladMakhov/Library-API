@@ -2,7 +2,6 @@ package system.service.impl;
 
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
-
 import system.exception.notFoundException.AuthorNotFoundException;
 import system.model.Author;
 import system.model.dto.AuthorDto;
@@ -24,6 +23,11 @@ public class AuthorServiceImpl implements AuthorService {
         this.authorRepository = authorRepository;
         this.bookRepository = bookRepository;
         this.bookService = bookService;
+    }
+
+    @Override
+    public List<Object> overview() {
+        return authorRepository.findBookWithAuthor();
     }
 
     @Override

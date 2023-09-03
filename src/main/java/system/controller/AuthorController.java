@@ -19,6 +19,11 @@ public class AuthorController {
         this.authorService = authorService;
     }
 
+    @GetMapping
+    public ResponseEntity<List<Object>> firstGlance() {
+        return new ResponseEntity<>(authorService.overview(), HttpStatus.FOUND);
+    }
+
     @GetMapping("authors")
     public ResponseEntity<List<AuthorDto>> getAuthorList() {
         return new ResponseEntity<>(authorService.getAllAuthors(), HttpStatus.FOUND);

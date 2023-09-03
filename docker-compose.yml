@@ -1,15 +1,16 @@
 version: "3"
 
 services:
-  mysql:
-    image: "mysql:8.1"
-    container_name: "java-mysql"
+  postgres:
+    image: "postgres:15"
+    container_name: "java-postgres"
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_PASSWORD: root
-      MYSQL_DATABASE: database
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "postgres"
+
   app:
     build: ./
     container_name: "java-app"
     ports:
-    - 8080:8080
+    - "8080:8080"
