@@ -1,4 +1,4 @@
-package system.security.controller.additional;
+package system.security.model.reqresp;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

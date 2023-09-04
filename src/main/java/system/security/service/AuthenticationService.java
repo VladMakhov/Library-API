@@ -6,12 +6,12 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import system.security.controller.additional.AuthenticationRequest;
-import system.security.controller.additional.AuthenticationResponse;
-import system.security.controller.additional.RegisterRequest;
-import system.security.model.Role;
-import system.security.repo.UserRepository;
-import system.security.model.User;
+import system.security.model.reqresp.AuthenticationRequest;
+import system.security.model.reqresp.AuthenticationResponse;
+import system.security.model.reqresp.RegisterRequest;
+import system.security.model.entity.Role;
+import system.security.model.repo.UserRepository;
+import system.security.model.entity.User;
 
 @Service
 @RequiredArgsConstructor
@@ -25,9 +25,7 @@ public class AuthenticationService {
 
     public AuthenticationResponse register(RegisterRequest request) {
         var user = User.builder()
-                .firstName(request.getFirstName())
-                .lastName(request.getLastName())
-                .email(request.getEmail())
+                .username(request.getUsername())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER)
                 .build();
@@ -41,9 +39,9 @@ public class AuthenticationService {
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                        request.getEmail(),
+                        request.getUsername(),
                         request.getPassword()));
-        var user = repository.findByEmail(request.getEmail())
+        var user = repository.findUserByUsername(request.getUsername())
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()

@@ -1,4 +1,4 @@
-package system.security.controller.additional;
+package system.security.model.reqresp;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AuthenticationRequest {
-    private String email;
+public class RegisterRequest {
+    private String username;
     private String password;
 }
