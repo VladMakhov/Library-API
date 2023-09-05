@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import system.security.model.reqresp.AuthenticationRequest;
-import system.security.model.reqresp.AuthenticationResponse;
-import system.security.model.reqresp.RegisterRequest;
+import system.security.model.AuthenticationRequest;
+import system.security.model.AuthenticationResponse;
+import system.security.model.RegisterRequest;
 import system.security.service.AuthenticationService;
 
 

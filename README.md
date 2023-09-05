@@ -7,4 +7,4 @@ How to set up project:
 4) http://localhost:8080/library/ + check in Endpoints to navigate
 
 # Endpoints
-![img.png](img.png)
+![img_2.png](img_2.png)

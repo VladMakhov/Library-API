@@ -6,11 +6,11 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import system.security.model.reqresp.AuthenticationRequest;
-import system.security.model.reqresp.AuthenticationResponse;
-import system.security.model.reqresp.RegisterRequest;
+import system.security.model.AuthenticationRequest;
+import system.security.model.AuthenticationResponse;
+import system.security.model.RegisterRequest;
 import system.security.model.entity.Role;
-import system.security.model.repo.UserRepository;
+import system.security.model.UserRepository;
 import system.security.model.entity.User;
 
 @Service
@@ -19,8 +19,8 @@ public class AuthenticationService {
 
     private final UserRepository repository;
     private final PasswordEncoder passwordEncoder;
-    private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+    private final JwtService jwtService;
 
 
     public AuthenticationResponse register(RegisterRequest request) {

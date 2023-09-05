@@ -1,4 +1,4 @@
-package system.security.model.reqresp;
+package system.security.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
