@@ -1,27 +1,33 @@
 package system.security.service;
 
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import system.security.model.AuthenticationRequest;
-import system.security.model.AuthenticationResponse;
-import system.security.model.RegisterRequest;
-import system.security.model.entity.Role;
-import system.security.model.UserRepository;
-import system.security.model.entity.User;
+import system.security.dto.AuthenticationRequest;
+import system.security.dto.AuthenticationResponse;
+import system.security.dto.RegisterRequest;
+import system.security.dto.UserRepository;
+import system.security.dto.entity.Role;
+import system.security.dto.entity.User;
 
 @Service
-@RequiredArgsConstructor
 public class AuthenticationService {
 
-    private final UserRepository repository;
+    private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
 
+    @Autowired
+    public AuthenticationService(UserRepository repository, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager, JwtService jwtService) {
+        this.userRepository = repository;
+        this.passwordEncoder = passwordEncoder;
+        this.authenticationManager = authenticationManager;
+        this.jwtService = jwtService;
+    }
 
     public AuthenticationResponse register(RegisterRequest request) {
         var user = User.builder()
@@ -29,7 +35,7 @@ public class AuthenticationService {
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER)
                 .build();
-        repository.save(user);
+        userRepository.save(user);
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()
                 .token(jwtToken)
@@ -41,7 +47,7 @@ public class AuthenticationService {
                 new UsernamePasswordAuthenticationToken(
                         request.getUsername(),
                         request.getPassword()));
-        var user = repository.findUserByUsername(request.getUsername())
+        var user = userRepository.findUserByUsername(request.getUsername())
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponse.builder()
