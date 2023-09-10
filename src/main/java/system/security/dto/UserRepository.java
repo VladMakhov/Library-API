@@ -1,8 +1,8 @@
-package system.security.model;
+package system.security.dto;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import system.security.model.entity.User;
+import system.security.dto.entity.User;
 
 import java.util.Optional;
 

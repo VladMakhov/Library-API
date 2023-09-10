@@ -1,4 +1,4 @@
-package system.security.model.entity;
+package system.security.dto.entity;
 
 public enum Role {
     USER,
