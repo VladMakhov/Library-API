@@ -29,9 +29,4 @@ public class Book {
     @OneToMany(mappedBy = "bookId", cascade = CascadeType.ALL)
     private List<Review> reviewList;
 
-    public Book(String bookName, int year, Author author) {
-        this.bookName = bookName;
-        this.year = year;
-        this.author = author;
-    }
 }

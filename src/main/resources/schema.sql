@@ -1,6 +1,8 @@
 drop table if exists reviews;
 drop table if exists books;
 drop table if exists authors;
+drop table if exists users;
+
 create table if not exists authors
 (
     id          bigint  not null auto_increment,
