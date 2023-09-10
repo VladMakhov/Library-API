@@ -23,9 +23,4 @@ public class Review {
     @JoinColumn(name = "book_id")
     private Book bookId;
 
-    public Review(String description, int stars, Book bookId) {
-        this.description = description;
-        this.stars = stars;
-        this.bookId = bookId;
-    }
 }
