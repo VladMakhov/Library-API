@@ -12,11 +12,20 @@ import java.util.List;
 public interface AuthorRepository extends JpaRepository<Author, Long> {
 
     @Query(nativeQuery = true, value = """
-            select b.book_name, aut.name, aut.last_name
-                from authors as aut
-                    join books as b
-                        on b.author_id = aut.id;""")
-    @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.SERIALIZABLE)
+                    select b.book_name, aut.name, aut.last_name
+                        from authors as aut
+                            join books as b
+                                on b.author_id = aut.id;
+            """)
+    @Transactional(
+            propagation = Propagation.REQUIRED,
+            isolation = Isolation.SERIALIZABLE,
+            readOnly = true,
+            rollbackFor = {
+                    RuntimeException.class,
+                    IllegalArgumentException.class
+            }
+    )
     List<Object> findBookWithAuthor();
 
 }

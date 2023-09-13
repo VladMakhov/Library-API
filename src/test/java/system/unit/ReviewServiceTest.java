@@ -1,4 +1,4 @@
-package system.service;
+package system.unit;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,7 +14,6 @@ import system.model.Review;
 import system.model.dto.ReviewDto;
 import system.repository.BookRepository;
 import system.repository.ReviewRepository;
-import system.service.impl.BookServiceImpl;
 import system.service.impl.ReviewServiceImpl;
 
 import java.util.ArrayList;
@@ -34,9 +33,6 @@ public class ReviewServiceTest {
 
     @InjectMocks
     private ReviewServiceImpl reviewService;
-
-    @InjectMocks
-    private BookServiceImpl bookService;
 
     private Book book;
 

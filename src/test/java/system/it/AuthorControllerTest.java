@@ -1,4 +1,4 @@
-package system.controller;
+package system.it;
 
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -35,52 +35,52 @@ public class AuthorControllerTest {
                         MockMvcResultMatchers.status().isFound(),
                         MockMvcResultMatchers.content().json("""
                                 [
-                                {
-                                "id": 1,
-                                "name": "Alexander",
-                                "lastName": "Pushkin",
-                                "nationality": "Russian",
-                                "birthYear": 1799,
-                                "birthCity": "Moscow",
-                                "occupation": "Poet"
-                                },
-                                {
-                                "id": 2,
-                                "name": "Nikolai",
-                                "lastName": "Gogol",
-                                "nationality": "Ukrainian",
-                                "birthYear": 1809,
-                                "birthCity": "Velyki Sorochyntsi",
-                                "occupation": "Novelist"
-                                },
-                                {
-                                "id": 3,
-                                "name": "Fyodor",
-                                "lastName": "Dostoevsky",
-                                "nationality": "Russian",
-                                "birthYear": 1821,
-                                "birthCity": "Moscow",
-                                "occupation": "Novelist"
-                                },
-                                {
-                                "id": 4,
-                                "name": "Leo",
-                                "lastName": "Tolstoy",
-                                "nationality": "Russian",
-                                "birthYear": 1828,
-                                "birthCity": "Yasnaya Polyana",
-                                "occupation": "Writer"
-                                },
-                                {
-                                "id": 5,
-                                "name": "Mikhail",
-                                "lastName": "Lermontov",
-                                "nationality": "Russian",
-                                "birthYear": 1814,
-                                "birthCity": "Moscow",
-                                "occupation": "Poet"
-                                }
-                                ]
+                                     {
+                                         "id": 1,
+                                         "name": "Leo",
+                                         "lastName": "Tolstoy",
+                                         "nationality": "Russian",
+                                         "birthYear": 1828,
+                                         "birthCity": "Yasnaya Polyana",
+                                         "occupation": "Writer"
+                                     },
+                                     {
+                                         "id": 2,
+                                         "name": "Nikolai",
+                                         "lastName": "Gogol",
+                                         "nationality": "Ukrainian",
+                                         "birthYear": 1809,
+                                         "birthCity": "Velyki Sorochyntsi",
+                                         "occupation": "Novelist"
+                                     },
+                                     {
+                                         "id": 3,
+                                         "name": "Alexander",
+                                         "lastName": "Pushkin",
+                                         "nationality": "Russian",
+                                         "birthYear": 1799,
+                                         "birthCity": "Moscow",
+                                         "occupation": "Poet"
+                                     },
+                                     {
+                                         "id": 4,
+                                         "name": "Fyodor",
+                                         "lastName": "Dostoevsky",
+                                         "nationality": "Russian",
+                                         "birthYear": 1821,
+                                         "birthCity": "Moscow",
+                                         "occupation": "Novelist"
+                                     },
+                                     {
+                                         "id": 5,
+                                         "name": "Mikhail",
+                                         "lastName": "Lermontov",
+                                         "nationality": "Russian",
+                                         "birthYear": 1814,
+                                         "birthCity": "Moscow",
+                                         "occupation": "Poet"
+                                     }
+                                 ]
                                 """)
                 );
     }
@@ -95,18 +95,18 @@ public class AuthorControllerTest {
                         MockMvcResultMatchers.status().isFound(),
                         MockMvcResultMatchers.content().json("""
                                 [
-                                {
-                                "id": 1,
-                                "bookName": "War and Peace",
-                                "year": 1867,
-                                "author": "Alexander Pushkin"
-                                },
-                                {
-                                "id": 2,
-                                "bookName": "Anna Karenina",
-                                "year": 1877,
-                                "author": "Alexander Pushkin"
-                                }
+                                    {
+                                        "id": 1,
+                                        "bookName": "War and Peace",
+                                        "year": 1867,
+                                        "author": "Leo Tolstoy"
+                                    },
+                                    {
+                                        "id": 2,
+                                        "bookName": "Anna Karenina",
+                                        "year": 1877,
+                                        "author": "Leo Tolstoy"
+                                    }
                                 ]
                                 """)
                 );
@@ -122,13 +122,13 @@ public class AuthorControllerTest {
                         MockMvcResultMatchers.status().isFound(),
                         MockMvcResultMatchers.content().json("""
                                 {
-                                "id": 1,
-                                "name": "Alexander",
-                                "lastName": "Pushkin",
-                                "nationality": "Russian",
-                                "birthYear": 1799,
-                                "birthCity": "Moscow",
-                                "occupation": "Poet"
+                                    "id": 1,
+                                    "name": "Leo",
+                                    "lastName": "Tolstoy",
+                                    "nationality": "Russian",
+                                    "birthYear": 1828,
+                                    "birthCity": "Yasnaya Polyana",
+                                    "occupation": "Writer"
                                 }
                                 """)
                 );

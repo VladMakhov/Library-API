@@ -34,11 +34,6 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public List<ReviewDto> getAllReviews() {
-        return reviewRepository.findAll().stream().map(this::mapToDto).toList();
-    }
-
-    @Override
     public ReviewDto getReviewById(long id) {
         Review review = reviewRepository.findById(id).orElseThrow(() ->
                 new ReviewNotFoundException("Review with id=" + id + " not found"));
