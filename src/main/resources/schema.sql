@@ -41,7 +41,8 @@ create table if not exists users
     username varchar(255),
     primary key (id)
 );
-
+alter table users
+    modify column role enum ('ADMIN','USER');
 alter table books
     add constraint foreign key (author_id) references authors (id);
 alter table reviews

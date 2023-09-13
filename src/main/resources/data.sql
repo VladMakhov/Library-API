@@ -1,8 +1,8 @@
 insert into authors (id, name, last_name, nationality, birth_year, birth_city, occupation)
-values (1, 'Alexander', 'Pushkin', 'Russian', 1799, 'Moscow', 'Poet'),
+values (1, 'Leo', 'Tolstoy', 'Russian', 1828, 'Yasnaya Polyana', 'Writer'),
        (2, 'Nikolai', 'Gogol', 'Ukrainian', 1809, 'Velyki Sorochyntsi', 'Novelist'),
-       (3, 'Fyodor', 'Dostoevsky', 'Russian', 1821, 'Moscow', 'Novelist'),
-       (4, 'Leo', 'Tolstoy', 'Russian', 1828, 'Yasnaya Polyana', 'Writer'),
+       (3, 'Alexander', 'Pushkin', 'Russian', 1799, 'Moscow', 'Poet'),
+       (4, 'Fyodor', 'Dostoevsky', 'Russian', 1821, 'Moscow', 'Novelist'),
        (5, 'Mikhail', 'Lermontov', 'Russian', 1814, 'Moscow', 'Poet');
 
 insert into books (id, book_name, year, author_id)
