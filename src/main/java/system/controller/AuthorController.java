@@ -21,27 +21,27 @@ public class AuthorController {
 
     @GetMapping
     public ResponseEntity<List<Object>> firstGlance() {
-        return new ResponseEntity<>(authorService.overview(), HttpStatus.FOUND);
+        return new ResponseEntity<>(authorService.overview(), HttpStatus.OK);
     }
 
     @GetMapping("authors")
     public ResponseEntity<List<AuthorDto>> getAuthorList() {
-        return new ResponseEntity<>(authorService.getAllAuthors(), HttpStatus.FOUND);
+        return new ResponseEntity<>(authorService.getAllAuthors(), HttpStatus.OK);
     }
 
     @GetMapping("authors/{authorId}")
     public ResponseEntity<AuthorDto> getAuthorById(@PathVariable("authorId") long id) {
-        return new ResponseEntity<>(authorService.getAuthorById(id), HttpStatus.FOUND);
+        return new ResponseEntity<>(authorService.getAuthorById(id), HttpStatus.OK);
     }
 
     @GetMapping("authors/{authorId}/books")
     public ResponseEntity<List<BookDto>> getBooksByAuthor(@PathVariable("authorId") long id) {
-        return new ResponseEntity<>(authorService.getBooksByAuthorId(id), HttpStatus.FOUND);
+        return new ResponseEntity<>(authorService.getBooksByAuthorId(id), HttpStatus.OK);
     }
 
     @PostMapping("authors/create")
     public ResponseEntity<AuthorDto> createAuthor(@RequestBody AuthorDto authorDto) {
-        return new ResponseEntity<>(authorService.createAuthor(authorDto), HttpStatus.CREATED);
+        return new ResponseEntity<>(authorService.createAuthor(authorDto), HttpStatus.OK);
     }
 
     @PutMapping("authors/{authorId}/update")
@@ -51,6 +51,6 @@ public class AuthorController {
 
     @DeleteMapping("authors/{authorId}/delete")
     public ResponseEntity<AuthorDto> deleteAuthor(@PathVariable("authorId") long id) {
-        return new ResponseEntity<>(authorService.deleteAuthor(id), HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(authorService.deleteAuthor(id), HttpStatus.OK);
     }
 }

@@ -32,7 +32,7 @@ public class AuthorControllerTest {
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpectAll(
-                        MockMvcResultMatchers.status().isFound(),
+                        MockMvcResultMatchers.status().isOk(),
                         MockMvcResultMatchers.content().json("""
                                 [
                                      {
@@ -92,7 +92,7 @@ public class AuthorControllerTest {
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpectAll(
-                        MockMvcResultMatchers.status().isFound(),
+                        MockMvcResultMatchers.status().isOk(),
                         MockMvcResultMatchers.content().json("""
                                 [
                                     {
@@ -119,7 +119,7 @@ public class AuthorControllerTest {
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpectAll(
-                        MockMvcResultMatchers.status().isFound(),
+                        MockMvcResultMatchers.status().isOk(),
                         MockMvcResultMatchers.content().json("""
                                 {
                                     "id": 1,
@@ -151,7 +151,7 @@ public class AuthorControllerTest {
                                 """))
                 .andDo(print())
                 .andExpectAll(
-                        MockMvcResultMatchers.status().isCreated(),
+                        MockMvcResultMatchers.status().isOk(),
                         MockMvcResultMatchers.content().json("""
                                 {
                                 "id": 6,
@@ -206,7 +206,7 @@ public class AuthorControllerTest {
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpectAll(
-                        MockMvcResultMatchers.status().isAccepted(),
+                        MockMvcResultMatchers.status().isOk(),
                         MockMvcResultMatchers.content().json("""
                                 {
                                 "id": 6,

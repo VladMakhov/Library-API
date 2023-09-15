@@ -20,32 +20,32 @@ public class ReviewController {
 
     @GetMapping("books/{initialBookId}/author/books/{bookId}/reviews")
     public ResponseEntity<List<ReviewDto>> getReviewsByBookByBook(@PathVariable("initialBookId") long initialBookId, @PathVariable("bookId") long bookId) {
-        return new ResponseEntity<>(reviewService.getReviewByBookId(bookId), HttpStatus.FOUND);
+        return new ResponseEntity<>(reviewService.getReviewByBookId(bookId), HttpStatus.OK);
     }
 
     @GetMapping("books/{bookId}/reviews")
     public ResponseEntity<List<ReviewDto>> getBookReviews(@PathVariable("bookId") long id) {
-        return new ResponseEntity<>(reviewService.getReviewByBookId(id), HttpStatus.FOUND);
+        return new ResponseEntity<>(reviewService.getReviewByBookId(id), HttpStatus.OK);
     }
 
     @GetMapping("authors/{authorId}/books/{bookId}/reviews")
     public ResponseEntity<List<ReviewDto>> getBookReviews(@PathVariable("authorId") long authorId, @PathVariable("bookId") long id) {
-        return new ResponseEntity<>(reviewService.getReviewByBookId(id), HttpStatus.FOUND);
+        return new ResponseEntity<>(reviewService.getReviewByBookId(id), HttpStatus.OK);
     }
 
     @GetMapping("books/{bookId}/reviews/{reviewId}")
     public ResponseEntity<ReviewDto> getReviewById(@PathVariable("bookId") long bookId, @PathVariable("reviewId") long reviewId) {
-        return new ResponseEntity<>(reviewService.getReviewById(reviewId), HttpStatus.FOUND);
+        return new ResponseEntity<>(reviewService.getReviewById(reviewId), HttpStatus.OK);
     }
 
     @PostMapping("books/{bookId}/reviews/create")
     public ResponseEntity<ReviewDto> createReview(@PathVariable("bookId") long id, @RequestBody ReviewDto reviewDto) {
-        return new ResponseEntity<>(reviewService.createReview(id, reviewDto), HttpStatus.CREATED);
+        return new ResponseEntity<>(reviewService.createReview(id, reviewDto), HttpStatus.OK);
     }
 
     @PostMapping("authors/{authorId}/books/{bookId}/reviews/create")
     public ResponseEntity<ReviewDto> createReview(@PathVariable("authorId") long authorId, @PathVariable("bookId") long bookId, @RequestBody ReviewDto reviewDto) {
-        return new ResponseEntity<>(reviewService.createReview(bookId, reviewDto), HttpStatus.CREATED);
+        return new ResponseEntity<>(reviewService.createReview(bookId, reviewDto), HttpStatus.OK);
     }
 
     @PutMapping("books/{bookId}/reviews/{reviewId}/update")
@@ -60,11 +60,11 @@ public class ReviewController {
 
     @DeleteMapping("books/{bookId}/reviews/{reviewId}/delete")
     public ResponseEntity<ReviewDto> deleteReview(@PathVariable("bookId") long bookId, @PathVariable("reviewId") long reviewId) {
-        return new ResponseEntity<>(reviewService.deleteReview(reviewId), HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(reviewService.deleteReview(reviewId), HttpStatus.OK);
     }
 
     @DeleteMapping("authors/{authorId}books/{bookId}/reviews/{reviewId}/delete")
     public ResponseEntity<ReviewDto> deleteReview(@PathVariable("authorId") long authorId, @PathVariable("bookId") long bookId, @PathVariable("reviewId") long reviewId) {
-        return new ResponseEntity<>(reviewService.deleteReview(reviewId), HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(reviewService.deleteReview(reviewId), HttpStatus.OK);
     }
 }

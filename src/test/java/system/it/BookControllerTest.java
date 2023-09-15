@@ -32,7 +32,7 @@ public class BookControllerTest {
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpectAll(
-                        MockMvcResultMatchers.status().isFound(),
+                        MockMvcResultMatchers.status().isOk(),
                         MockMvcResultMatchers.content().json("""
                                 [
                                      {
@@ -107,7 +107,7 @@ public class BookControllerTest {
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpectAll(
-                        MockMvcResultMatchers.status().isFound(),
+                        MockMvcResultMatchers.status().isOk(),
                         MockMvcResultMatchers.content().json("""
                                 {
                                     "id": 1,
@@ -132,7 +132,7 @@ public class BookControllerTest {
                                 """))
                 .andDo(print())
                 .andExpectAll(
-                        MockMvcResultMatchers.status().isCreated(),
+                        MockMvcResultMatchers.status().isOk(),
                         MockMvcResultMatchers.content().json("""
                                 {
                                     "id": 11,
@@ -176,7 +176,7 @@ public class BookControllerTest {
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpectAll(
-                        MockMvcResultMatchers.status().isAccepted(),
+                        MockMvcResultMatchers.status().isOk(),
                         MockMvcResultMatchers.content().json("""
                                 {
                                     "id": 11,

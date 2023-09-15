@@ -32,7 +32,7 @@ public class ReviewControllerTest {
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpectAll(
-                        MockMvcResultMatchers.status().isFound(),
+                        MockMvcResultMatchers.status().isOk(),
                         MockMvcResultMatchers.content().json("""
                                 [
                                 {
@@ -63,7 +63,7 @@ public class ReviewControllerTest {
                                 """))
                 .andDo(print())
                 .andExpectAll(
-                        MockMvcResultMatchers.status().isCreated(),
+                        MockMvcResultMatchers.status().isOk(),
                         MockMvcResultMatchers.content().json("""
                                 {
                                 "id": 21,
@@ -105,7 +105,7 @@ public class ReviewControllerTest {
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpectAll(
-                        MockMvcResultMatchers.status().isAccepted(),
+                        MockMvcResultMatchers.status().isOk(),
                         MockMvcResultMatchers.content().json("""
                                 {
                                 "id": 21,

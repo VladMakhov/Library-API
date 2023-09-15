@@ -41,8 +41,8 @@ public class JWTFilterChain {
                 )
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/library/auth/**").permitAll()
-                        .requestMatchers("/library/**").fullyAuthenticated()
-                        .anyRequest().fullyAuthenticated()
+                        .requestMatchers("/library/**").permitAll()
+                        .anyRequest().permitAll()
                 )
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
