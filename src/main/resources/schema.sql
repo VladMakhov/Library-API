@@ -5,7 +5,7 @@ drop table if exists users;
 
 create table if not exists authors
 (
-    id          bigint  not null auto_increment,
+    id          serial,
     birth_city  varchar(255),
     birth_year  integer not null,
     last_name   varchar(255),
@@ -17,33 +17,35 @@ create table if not exists authors
 
 create table if not exists books
 (
-    id        bigint  not null auto_increment,
+    id        serial,
     book_name varchar(255),
     year      integer not null,
     author_id bigint,
-    primary key (id)
+    primary key (id),
+    FOREIGN KEY(author_id)
+    REFERENCES authors(id)
 );
 
 create table if not exists reviews
 (
-    id          bigint  not null auto_increment,
+    id          serial,
     description varchar(255),
     stars       integer not null,
     book_id     bigint,
-    primary key (id)
+    primary key (id),
+    FOREIGN KEY(book_id)
+    REFERENCES books(id)
 );
 
 create table if not exists users
 (
-    id       integer not null auto_increment,
+    id       serial,
     password varchar(255),
-    role     enum ('ADMIN','USER'),
+    role     varchar(255),
     username varchar(255),
     primary key (id)
 );
-alter table users
-    modify column role enum ('ADMIN','USER');
-alter table books
-    add constraint foreign key (author_id) references authors (id);
-alter table reviews
-    add constraint foreign key (book_id) references books (id);
+
+alter table if exists authors alter column id set data type bigint;
+alter table if exists books alter column id set data type bigint;
+alter table if exists reviews alter column id set data type bigint;
